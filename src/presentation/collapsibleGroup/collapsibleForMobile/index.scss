@@ -1,0 +1,611 @@
+@mixin retina {
+    @media only screen and (-webkit-min-device-pixel-ratio: 2),
+      only screen and (min--moz-device-pixel-ratio: 2),
+      only screen and (-o-min-device-pixel-ratio: 2/1),
+      only screen and (min-device-pixel-ratio: 2),
+      only screen and (min-resolution: 192dpi),
+      only screen and (min-resolution: 2dppx)
+      {
+        @content;
+      }
+  }
+  
+  @mixin mobile {
+    @media screen and (min-width: 320px) {
+      @content;
+    }
+  }
+  @mixin mobile-only {
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+      @content;
+    }
+  }
+  
+  @mixin mobile-wide {
+    @media screen and (min-width: 620px) {
+      @content;
+    }
+  }
+  @mixin mobile-wide-only {
+    @media screen and (min-width: 620px) and (max-width: 767px) {
+      @content;
+    }
+  }
+  
+  @mixin tablet {
+    @media screen and (min-width: 768px) {
+      @content;
+    }
+  }
+  @mixin tablet-only {
+    @media screen and (min-width: 768px) and (max-width: 1023px) {
+      @content;
+    }
+  }
+  
+  @mixin tablet-wide {
+    @media screen and (min-width: 1024px) {
+      @content;
+    }
+  }
+  @mixin tablet-wide-only {
+    @media screen and (min-width: 1024px) and (max-width: 1199px) {
+      @content;
+    }
+  }
+  
+  @mixin tablet-max-1024{
+    @media screen and (max-width: 1024px)  {
+      @content;
+    }
+  }
+  
+  
+  @mixin desktop {
+    @media screen and (min-width: 1024px) {
+      @content;
+    }
+  }
+  
+  @mixin desktop-wide {
+    @media screen and (min-width: 1200px) {
+      @content;
+    }
+  }
+  
+  @mixin desktop-large {
+    @media screen and (min-width: 1440px) {
+      @content;
+    }
+  }
+  
+  @mixin background-gradient($startcolor, $endcolor, $orientation) {
+      background: $startcolor;
+      @if $orientation == vertical{ /* vertical */
+        background: -moz-linear-gradient(top,  $startcolor 0%, $endcolor 100%);
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$startcolor), color-stop(100%,$endcolor));
+        background: -webkit-linear-gradient(top,  $startcolor 0%,$endcolor 100%);
+        background: -o-linear-gradient(top,  $startcolor 0%,$endcolor 100%);
+        background: -ms-linear-gradient(top,  $startcolor 0%,$endcolor 100%);
+        background: linear-gradient(to bottom,  $startcolor 0%,$endcolor 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$startcolor', endColorstr='$endcolor',GradientType=0 );
+      }@else if $orientation == horizontal{ /* horizontal */
+        background: -moz-linear-gradient(left,  $startcolor 0%, $endcolor 100%);
+        background: -webkit-gradient(linear, left top, right top, color-stop(0%,$startcolor), color-stop(100%,$endcolor));
+        background: -webkit-linear-gradient(left,  $startcolor 0%,$endcolor 100%);
+        background: -o-linear-gradient(left,  $startcolor 0%,$endcolor 100%);
+        background: -ms-linear-gradient(left,  $startcolor 0%,$endcolor 100%);
+        background: linear-gradient(to right,  $startcolor 0%,$endcolor 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$startcolor', endColorstr='$endcolor',GradientType=1 );
+      }@else{ /* radial */
+        background: -moz-radial-gradient(center, ellipse cover,  $startcolor 0%, $endcolor 100%);
+        background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,$startcolor), color-stop(100%,$endcolor));
+        background: -webkit-radial-gradient(center, ellipse cover,  $startcolor 0%,$endcolor 100%);
+        background: -o-radial-gradient(center, ellipse cover,  $startcolor 0%,$endcolor 100%);
+        background: -ms-radial-gradient(center, ellipse cover,  $startcolor 0%,$endcolor 100%);
+        background: radial-gradient(ellipse at center,  $startcolor 0%,$endcolor 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$startcolor', endColorstr='$endcolor',GradientType=1 );
+      }
+  }
+  
+  @mixin gradient-dual-direction($start-color, $end-color, $deg) {
+    background: -moz-linear-gradient(top, $start-color 0%, $end-color 100%);
+    background: -webkit-linear-gradient(top, $start-color 0%, $end-color 100%);
+    background: linear-gradient(to bottom, $start-color 0%, $end-color 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$start-color', endColorstr='$end-color',GradientType=0 );
+  }
+  
+  /* BACKGROUND SIZE */
+  /* USAGE Example: @include background-size(100%, 100%); */
+  @mixin background-size($width, $height) {
+      -moz-background-size:$width $height;
+    -webkit-background-size:$width $height;
+      background-size:$width $height;
+  }
+  
+  @mixin anim(){
+    -webkit-transition:all, .5s, linear;
+    -moz-transition:all, .5s, linear;
+    transition:all, .5s, linear;
+  }
+  
+  @mixin animCustom($item, $duration, $type){
+    -webkit-transition:$item, $duration, $type;
+    -moz-transition:$item, $duration, $type;
+    transition:$item, $duration, $type;
+  }
+  
+  @mixin move-animation($animate...) {
+      $max: length($animate);
+      $animations: '';
+  
+      @for $i from 1 through $max {
+          $animations: #{$animations + nth($animate, $i)};
+  
+          @if $i < $max {
+              $animations: #{$animations + ", "};
+          }
+      }
+      -webkit-animation: $animations;
+      -moz-animation:    $animations;
+      -o-animation:      $animations;
+      animation:         $animations;
+  }
+  
+  @mixin keyframes($animationName) {
+      @-webkit-keyframes #{$animationName} {
+          @content;
+      }
+      @-moz-keyframes #{$animationName} {
+          @content;
+      }
+      @-o-keyframes #{$animationName} {
+          @content;
+      }
+      @keyframes #{$animationName} {
+          @content;
+      }
+  }
+  
+  @mixin box-shadow($top, $left, $blur, $color, $inset:false) {
+    @if $inset {
+      -webkit-box-shadow:inset $top $left $blur $color;
+      -moz-box-shadow:inset $top $left $blur $color;
+      box-shadow:inset $top $left $blur $color;
+    } @else {
+      -webkit-box-shadow: $top $left $blur $color;
+      -moz-box-shadow: $top $left $blur $color;
+      box-shadow: $top $left $blur $color;
+    }
+  }
+  
+  /* BOX SIZING */
+  /* usage example: @include box-sizing(border-box); */
+  @mixin box-sizing($type) {
+    -webkit-box-sizing:$type;
+    -moz-box-sizing:$type;
+    box-sizing:$type;
+  }
+  
+  @mixin full-width{width:100%; float:left;}
+  
+  /* POSITION */
+  /* USAGE EXAMPLE : @include position(absolute, 10px, null, 10px, 10px); */
+  @mixin position($type,$left,$right,$top,$bottom) {
+    position: $type;
+    left: $left;
+    right: $right;
+    top: $top;
+    bottom: $bottom;
+  }
+  
+  /* OPACITY */
+  /* USAGE EXAMPLE : @include opacity(0.2); */
+  @mixin opacity($opacity) {
+    opacity: $opacity;
+    filter: alpha(opacity=($opacity * 100));
+  }
+  
+  /* Arrows / Triangles */
+  @mixin arrow($direction, $arrowColor, $arrowSize){
+      width: 0;
+      height: 0;
+      @if $direction == up{
+          border-left: $arrowSize dashed transparent;
+          border-right: $arrowSize dashed transparent;
+          border-bottom: $arrowSize dashed $arrowColor;
+      } @else if($direction == down){
+          border-left: $arrowSize dashed transparent;
+          border-right: $arrowSize dashed transparent;
+          border-top: $arrowSize dashed $arrowColor;
+      } @else if($direction == right){
+          border-top: $arrowSize dashed transparent;
+          border-bottom: $arrowSize dashed transparent;
+          border-left: $arrowSize dashed $arrowColor;
+      } @else if($direction == left){
+          border-top: $arrowSize dashed transparent;
+          border-bottom: $arrowSize dashed transparent;
+          border-right:$arrowSize dashed $arrowColor;
+      }
+  }
+  
+  /* Circle */
+  @mixin circle(){
+      /*width: $radius / 2;
+      height: $radius / 2;*/
+      border-radius: 50% 50%;
+      -moz-border-radius: 50% 50%;
+      -webkit-border-radius: 50% 50%;
+      -o-border-radius: 50% 50%;
+      -ms-border-radius: 50% 50%;
+  }
+  
+  @mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    border-radius: $radius;
+  }
+  
+  @mixin text-truncate(){
+    text-overflow:ellipsis;
+    overflow:hidden;
+    white-space:nowrap;
+  }
+  
+  /* Not Text */
+  @mixin no-text(){
+    overflow:hidden;
+    text-indent:-99999999px;
+  }
+  
+  /* Auto */
+  @mixin center{
+    margin:0 auto;
+  }
+  
+  @mixin center-pos{
+    position:absolute;
+    left:50%;
+    top:50%;
+    @include transform (translate(-50%, -50%))
+  }
+  
+  @mixin vert-center-pos(){
+    position:absolute;
+    top:50%;
+    @include transform (translate(0, -50%))
+  }
+  
+  @mixin hor-center-pos(){
+    position:absolute;
+    left:50%;
+    @include transform (translate(-50%, 0))
+  }
+  
+  @mixin text-center{
+    text-align:center;
+  }
+  
+  /* generic transform */
+  @mixin transform($transforms) {
+    -moz-transform: $transforms;
+    -o-transform: $transforms;
+    -ms-transform: $transforms;
+    -webkit-transform: $transforms;
+    transform: $transforms;
+  }
+  
+  /* rotate */
+  @mixin rotate ($deg) {
+    @include transform(rotate(#{$deg}deg));
+  }
+  
+  /* rotate */
+  @mixin translateRotate {
+    @include transform(rotate(-90deg) translate(0px, -50%));
+    position:absolute;
+  }
+  
+  /* scale */
+  @mixin scale($scale) {
+     @include transform(scale($scale));
+  }
+  
+  /* translate */
+  @mixin translate ($x, $y) {
+     @include transform(translate($x, $y));
+  }
+  
+  /* skew */
+  @mixin skew ($x, $y) {
+     @include transform(skew(#{$x}deg, #{$y}deg));
+  }
+  
+  /* transform origin */
+  @mixin transform-origin ($origin) {
+    moz-transform-origin: $origin;
+    -o-transform-origin: $origin;
+    -ms-transform-origin: $origin;
+    -webkit-transform-origin: $origin;
+    transform-origin: $origin;
+  }
+  
+  
+$font-base : 14px !default;
+$font-11 : 11px !default;
+$font-12 : 12px !default;
+$font-13 : 13px !default;
+$font-15 : 15px !default;
+$font-16 : 16px !default;
+$font-18 : 18px !default;
+$font-20 : 20px !default;
+$font-22 : 22px !default;
+$font-24 : 24px !default;
+$font-25 : 25px !default;
+$font-26 : 26px !default;
+$font-28 : 28px !default;
+$font-30 : 30px !default;
+$font-36 : 36px !default;
+$font-47 : 47px !default;
+
+
+/*$line-height-base: 1.625em !default;*/
+
+/* COLORS */
+$base-color : #eeeeee;
+$primary-color : #333333;
+$secondary-color : #666666;
+$gray-color : #999999;
+$light-gray : #e6e6e6;
+$input-border-color : #d8d8d8;
+$input-label : #666666;
+$brand-color : #eb7706;
+$brand-color-hover : #b65b03;
+$preview-color : #e0e0e0;
+
+$link-hover:#dc5e00;
+$link-color : #eb7706;
+$white : #fff;
+$white-alpha : rgba(255,255,255,.6);
+
+.filter-box, .browse-role{
+	background: $white; 
+	padding: 12px; 
+	height: 42px;
+	text-transform: uppercase; 
+	margin-bottom: 15px; 
+	display: block; 
+	color: $primary-color !important; 
+	text-decoration: none !important;
+
+	.icon-arrow-down{color: #a9a9a9; position: relative; top: 2px}
+	.applied{
+		width: 18px; 
+		height: 18px; 
+		border: 1px solid $brand-color; 
+		@include text-center; 
+		color: $brand-color; 
+		@include circle; 
+		display: inline-block;
+		margin-left: 3px;
+		i{font-size: 13px; position: relative; top: -1px}
+	}
+
+}
+.browse-role{padding: 2px 12px;
+	em{font-style: normal; color: $brand-color; font-size: 11px;}
+	.icon-arrow-down{top: -7px}
+}
+.filter-title{background: #fff; padding:15px 15px; color: #000; border-bottom: 1px solid #f0f0f0; text-transform: uppercase;
+		.icon-close{color: #686868; margin-right: 10px; text-decoration: none; font-style: normal; display: inline-block;}
+	}
+
+.filters{width: 100%; background: $white; position: fixed; top: 0; left: 0; bottom: 0; z-index: 2; display: block;
+	@include mobile-only{
+		z-index: 999;
+	}
+
+		&:before{
+			content:"";
+			display: block;
+			/*height: 60px;*/
+			width: 100%;
+		}
+		.overflow-visible{
+			overflow: visible;
+		}
+		.btn-fixed{
+			position: fixed;
+			bottom: 0;
+			z-index: 200;
+		}
+		.filter-items{/*width: 120px;*/
+			h4{font-size: 14px; font-weight: normal; text-transform: uppercase;
+				.filter-label{color: #000; text-decoration: none; background: #f4f4f4; padding: 18px 5px 17px 12px; display: block;
+					&.active{background: $white;}
+					.caret-arrow{display: none;}
+				}
+				.clear-filter{
+					display: none;
+				}
+			}
+			
+		}
+
+
+		.filter-details{/*position: absolute; top: 130px; right:10px; left: 130px; bottom: 60px; height: 70vh; /*overflow: auto; */
+			ul{
+				li{margin-bottom: 12px; padding:0 12px 12px 12px; float: left; width: 100%; border-bottom: 1px solid #f4f4f4;
+					
+				}
+			}
+			.more-filter{color: $brand-color; text-decoration: none;}
+		}
+		.custom-form-controls {
+			margin-bottom: 0;
+			label{
+				font-size: 13px;
+				cursor: pointer;
+			}
+		}
+
+		@include mobile-only{
+			.custom-form-controls {
+				input[type=checkbox]+label, input[type=radio]+label{padding: 0 22px 0 0px; display: block;
+					&:before{
+					left:auto;
+					right: 0;
+					@include vert-center-pos;
+					}
+				}
+			}
+		}
+
+		.serach-box{margin-bottom: 10px; @include full-width;
+			.custom-form-controls{
+				top: -6px;
+				label, input{font-size: 12px; color: #8d8d8d}
+				input{height: 35px; border-color: #d8d8d8;
+					&:focus + label{top:0}
+				}
+				i{left: 8px; font-size: 16px; top: 12px; color: #4b4b4b}
+			}
+	}
+	input[type=checkbox]:checked + label, input[type=radio]:checked + label{
+		font-weight: bold;
+	}
+}
+
+@include tablet-wide{
+	.filter-title{
+		.icon-close{display: none;}
+	}
+	.filters{position: relative; display: block;
+		&:before{
+			display:none;
+		}
+		.btn-fixed{
+			button{
+				display:none;
+				position: fixed;
+				bottom: 0;
+				width: 100%;
+			}
+		}
+		.filter-items{width: 100%; padding:3px 15px; border-bottom: 1px solid #f0f0f0; float: left;
+			h4{
+				.filter-label{background: transparent; padding: 12px 0; display: inline-block;
+					.caret-down{margin-right: 10px; @include arrow(down, #919191, 5px); display: inline-block; vertical-align: middle;}
+					.caret-right{@include arrow(right, #919191, 5px); vertical-align: top;}
+				}
+				.clear-filter{
+					font-size: $font-12; text-transform: capitalize; margin-top: 15px; display: inline-block; color: $brand-color; float: right;
+				}
+			}
+		}
+		.filter-details{position: static; float: left; width: 100%; /*max-height: 280px;*/ height: auto;
+			ul{
+				li{
+					border: 0; padding: 0;
+				}
+			}
+		}
+	}
+}
+#age-filter {overflow-x:hidden; padding-bottom: 20px;
+	label{font-size: $font-12; color: #919191; padding-top: 5px;}
+}
+
+
+.bootstrap-reset{
+	.col-space{
+		margin-bottom:10px;
+	}
+	.container{
+		padding-left: 5px; padding-right: 5px;
+	}
+	.row{
+			margin-left: -5px;
+		    margin-right: -5px;
+		}
+	.col-xs-6{padding-left: 5px; padding-right: 5px;}
+	.col-xs-12{padding-left: 10px; padding-right: 10px;}
+
+	@include tablet-wide{
+		.container{
+		padding-left: 1px; padding-right: 5px;
+		}
+
+		.row{
+			margin-left: -5px;
+		    margin-right: -5px;
+		}
+
+		.col-sm-3{padding-left: 8px; padding-right: 8px;}
+		.col-sm-4{padding-left: 5px; padding-right: 5px;}
+		.col-sm-9{padding-left: 4px; padding-right: 4px;}
+		
+	}
+
+	@include desktop{
+		.col-space{
+			margin-bottom:14px;
+		}
+		.container{padding-left: 15px; padding-right: 15px;}
+		.row{
+			margin-left: -7px !important;
+		    margin-right: -7px !important;
+		}
+		.col-md-3{padding-left: 7px; padding-right: 7px;}
+		.col-md-4{padding-left: 5px; padding-right: 5px;}
+		.col-sm-9, .col-md-9{padding-left: 12px; padding-right: 4px;}
+	}
+
+
+	
+}
+
+
+.serach-box{width: 100%; display: none;
+	.custom-form-controls{margin-bottom: 0;
+		top: -6px;
+		label, input{padding-left: 35px;}
+		input{height: 42px;}
+		i{position: absolute; left: 8px; font-size: 20px; color: $input-border-color; top: 12px;}
+	}
+	@include tablet-wide{
+		float: left; width: 280px; display: block;
+	}
+}
+.Mobsearch{position: absolute; top: 19px; right: 20px; font-size: 21px; cursor: pointer;
+		a{color: $white; display: block;}
+	}
+
+/*Fixed in Index page*/
+.custom-form-controls input:focus + label + i{
+	color: $brand-color !important;
+}
+
+.filter-left-nav{
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+	position: fixed !important;
+	top:50px;
+	bottom: 42px;
+	overflow-y: scroll;
+	@include tablet-only{
+		top: 134px;
+	}
+}
+.filter-details-nav{
+	margin-top: 10px;
+	position: fixed !important;
+	top:50px;
+	bottom: 42px;
+	right: 0px;
+	overflow-y: scroll;
+	@include tablet-only{
+		top: 134px;
+	}
+}
