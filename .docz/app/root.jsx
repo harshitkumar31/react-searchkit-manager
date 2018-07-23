@@ -2,11 +2,7 @@ import React from 'react'
 import { hot } from 'react-hot-loader'
 import Theme from 'docz-theme-default'
 
-<<<<<<< HEAD
-const socket = new WebSocket(`ws://127.0.0.1:8091`)
-=======
 const socket = new WebSocket(`ws://127.0.0.1:8089`)
->>>>>>> Searchkit, complete rewrite
 
 class Root extends React.Component {
   state = {
@@ -30,7 +26,8 @@ class Root extends React.Component {
 
   render() {
     const { imports } = this.props
-    return <Theme {...this.state} imports={imports} />
+
+    return <Theme {...this.state} imports={imports} hashRouter={false} />
   }
 }
 

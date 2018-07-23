@@ -1,84 +1,6 @@
 {
   "name": "react-searchkit-manager",
   "version": "1.0.0",
-<<<<<<< HEAD
-  "description": "It is intended to be used with any component to populate appropriate filters and pills",
-  "main": "./dist/react-searchkit-manager.js",
-  "scripts": {
-    "build": "npm run build:lib && npm run build:npm && npm run build:min",
-    "build:lib": "babel src --out-dir lib ",
-    "build:npm": "NODE_ENV=development webpack src/index.js dist/react-searchkit-manager.js",
-    "build:min": "NODE_ENV=production webpack src/index.js dist/react-searchkit-manager.min.js",
-    "test": "mocha --compilers js:babel-register --recursive 'src/__test__/*'",
-    "test:coverage": "npm run build:lib && istanbul cover _mocha -- recursive 'lib/__test__/*'",
-    "test:lint": "eslint src",
-    "show:coverage": "open coverage/lcov-report/index.html",
-    "clean": "rimraf lib coverage dist",
-    "dev": "docz dev",
-    "docz:build": "docz build"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/harshitkumar31/react-searchkit-manager.git"
-  },
-  "keywords": [
-    "react",
-    "component",
-    "searchkit",
-    "pills",
-    "filters",
-    "react-component",
-    "url",
-    "based",
-    "filtering",
-    "search",
-    "browse"
-  ],
-  "author": "Harshit Kumar (https://github.com/harshitkumar31)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/harshitkumar31/react-searchkit-manager/issues"
-  },
-  "homepage": "https://github.com/harshitkumar31/react-searchkit-manager#readme",
-  "dependencies": {
-    "@babel/core": "^7.0.0-beta.42",
-    "antd": "^3.0.1",
-    "babel-plugin-lodash": "^3.3.4",
-    "babel-preset-env": "^1.7.0",
-    "docz-plugin-babel6": "^0.2.6",
-    "lodash": "^4.17.4",
-    "prop-types": "^15.6.0",
-    "query-string": "^5.0.1",
-    "react-responsive": "^4.0.3"
-  },
-  "peerDependencies": {
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0"
-  },
-  "devDependencies": {
-    "css-loader": "^0.28.7",
-    "deep-freeze": "0.0.1",
-    "docz": "^0.2.6",
-    "eslint": "^3.2.2",
-    "eslint-config-airbnb": "^16.1.0",
-    "eslint-plugin-import": "^1.12.0",
-    "eslint-plugin-jsx-a11y": "^2.0.1",
-    "eslint-plugin-react": "^6.0.0",
-    "expect": "^1.20.2",
-    "extract-text-webpack-plugin": "^3.0.2",
-    "isomorphic-style-loader": "^4.0.0",
-    "istanbul": "^0.4.4",
-    "less": "^2.7.3",
-    "less-loader": "^4.0.5",
-    "mocha": "^3.0.1",
-    "node-sass": "^4.7.2",
-    "raw-loader": "^0.5.1",
-    "rimraf": "^2.5.4",
-    "sass-loader": "^6.0.6",
-    "style-loader": "^0.19.1",
-    "url-loader": "^0.5.8",
-    "webpack": "^4.12.0"
-=======
   "description": "Testing docz Package",
   "main": "index.js",
   "scripts": {
@@ -88,6 +10,11 @@
   "author": "Harshit Kumar <hrsht.kumar1@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "babel-plugin-lodash": "^3.3.4",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
     "docz": "^0.2.6",
     "prop-types": "^15.6.2",
     "query-string": "^6.1.0"
@@ -99,6 +26,5 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.9.1",
     "react": "^16.4.1"
->>>>>>> Searchkit, complete rewrite
   }
 }

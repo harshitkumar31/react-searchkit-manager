@@ -12,25 +12,6 @@ import { stringifyQueryParams,stripTrailingSlash } from './utils';
  * @param  {[type]} specialArgumentsForSearchKit    Object which contains extra arguments needed to populate the URL from an existing object
  * @return {none}
  */
-<<<<<<< HEAD
-export function defaultOnSelectOptionClickHandler(name, label, value, event, specialArgumentsForSearchKit) {
-	const key = specialArgumentsForSearchKit.urlCode;
-	const queryObject = specialArgumentsForSearchKit.fieldValues;
-	const pathname = stripTrailingSlash(specialArgumentsForSearchKit.pathname);
-	queryObject[key] = [value];
-
-	if (this.isMobile) {
-		const { filters } = this.state;
-		const newState = Object.assign({}, filters, { fieldValues: queryObject });
-		this.setState({
-			filters: newState,
-		});
-	} else {
-		const { history } = this.props;
-		const url = stringifyQueryParams(queryObject);
-		history.push(`${pathname}/?${url}`);
-	}
-=======
 function defaultOnSelectOptionClickHandler(name, label, value, event, specialArgumentsForSearchKit) {
     const key = specialArgumentsForSearchKit.urlCode;
     const queryObject = specialArgumentsForSearchKit.fieldValues;
@@ -48,7 +29,6 @@ function defaultOnSelectOptionClickHandler(name, label, value, event, specialArg
         const url = stringifyQueryParams(queryObject);
         history.push(`${pathname}/?${url}`);
     }
->>>>>>> Searchkit, complete rewrite
 }
 
 /**
@@ -58,41 +38,7 @@ function defaultOnSelectOptionClickHandler(name, label, value, event, specialArg
  * @param  {[type]} specialArgumentsForSearchKit  Object which contains extra arguments needed to populate the URL from an existing object
  * @return {none}
  */
-<<<<<<< HEAD
-export function defaultMultiCheckBoxClickHandler(event, specialArgumentsForSearchKit) {
-	const key = specialArgumentsForSearchKit.urlCode;
-	const queryObject = specialArgumentsForSearchKit.fieldValues;
-	const pathname = stripTrailingSlash(specialArgumentsForSearchKit.pathname);
-	const value = specialArgumentsForSearchKit.value;
-	if (queryObject[key] !== undefined) {
-		const arr = queryObject[key];
-		let ind = -1;
-		if ((ind = arr.indexOf(value)) > -1) {
-			arr.splice(ind, 1);
-			if (arr.length > 0) {
-				queryObject[key] = arr;
-			} else {
-				delete queryObject[key];
-			}
-		} else {
-			queryObject[key].push(...[value]);
-		}
-	} else {
-		queryObject[key] = [value];
-	}
 
-	if (this.isMobile) {
-		const { filters } = this.state;
-		const newState = Object.assign({}, filters, { fieldValues: queryObject });
-		this.setState({
-			filters: newState,
-		});
-	} else {
-		const { history } = this.props;
-		const url = stringifyQueryParams(queryObject);
-		history.push(`${pathname}/?${url}`);
-	}
-=======
 function defaultMultiCheckBoxClickHandler(event, specialArgumentsForSearchKit) {
     const key = specialArgumentsForSearchKit.urlCode;
     const queryObject = specialArgumentsForSearchKit.fieldValues;
@@ -126,7 +72,7 @@ function defaultMultiCheckBoxClickHandler(event, specialArgumentsForSearchKit) {
         const url = stringifyQueryParams(queryObject);
         history.push(`${pathname}/?${url}`);
     }
->>>>>>> Searchkit, complete rewrite
+
 }
 
 /**
@@ -136,29 +82,7 @@ function defaultMultiCheckBoxClickHandler(event, specialArgumentsForSearchKit) {
  * @param  {[type]} specialArgumentsForSearchKit  Object which contains extra arguments needed to populate the URL from an existing object
  * @return {none}
  */
-<<<<<<< HEAD
-export function defaultOnRadioButtonToggleHandler(event, specialArgumentsForSearchKit) {
-	const key = specialArgumentsForSearchKit.urlCode;
-	const queryObject = specialArgumentsForSearchKit.fieldValues;
-	const pathname = stripTrailingSlash(specialArgumentsForSearchKit.pathname);
-	if (specialArgumentsForSearchKit.checked) {
-		queryObject[key] = [specialArgumentsForSearchKit.value];
-	} else {
-		delete queryObject[key];
-	}
 
-	if (this.isMobile) {
-		const { filters } = this.state;
-		const newState = Object.assign({}, filters, { fieldValues: queryObject });
-		this.setState({
-			filters: newState,
-		});
-	} else {
-		const { history } = this.props;
-		const url = stringifyQueryParams(queryObject);
-		history.push(`${pathname}/?${url}`);
-	}
-=======
 function defaultOnRadioButtonToggleHandler(event, specialArgumentsForSearchKit) {
     const key = specialArgumentsForSearchKit.urlCode;
     const queryObject = specialArgumentsForSearchKit.fieldValues;
@@ -180,7 +104,7 @@ function defaultOnRadioButtonToggleHandler(event, specialArgumentsForSearchKit) 
         const url = stringifyQueryParams(queryObject);
         history.push(`${pathname}/?${url}`);
     }
->>>>>>> Searchkit, complete rewrite
+
 }
 
 
@@ -191,71 +115,7 @@ function defaultOnRadioButtonToggleHandler(event, specialArgumentsForSearchKit) 
  * @param  {[type]} specialArgumentsForSearchKit  Object which contains extra arguments needed to populate the URL from an existing object
  * @return {none}
  */
-<<<<<<< HEAD
-export function defaultOnPillCloseHandler(specialArgumentsForSearchKit) {
-	const key = specialArgumentsForSearchKit.urlCode;
-	const queryObject = specialArgumentsForSearchKit.fieldValues;
-	const pathname = stripTrailingSlash(specialArgumentsForSearchKit.pathname);
-	const value = specialArgumentsForSearchKit.value;
-	if (queryObject[key] !== undefined) {
-		const arr = queryObject[key];
-		let ind = -1;
-		ind = arr.indexOf(value);
-		if (ind > -1) {
-			arr.splice(ind, 1);
-			if (arr.length > 0) {
-				queryObject[key] = arr;
-			} else {
-				delete queryObject[key];
-			}
-		} else {
-			queryObject[key].push(...[value]);
-		}
-	} else {
-		queryObject[key] = [value];
-	}
 
-	if (this.isMobile) {
-		const { filters } = this.state;
-		const newState = Object.assign({}, filters, { fieldValues: queryObject });
-		this.setState({
-			filters: newState,
-		});
-	} else {
-		const { history } = this.props;
-		const url = stringifyQueryParams(queryObject);
-		history.replace({pathname: `${pathname}`, search: `?${url}`});
-	}
-}
-
-export function defaultInputRangeSliderClickHandler(values, specialArgumentsForSearchKit) {
-	const { history } = this.props;
-	const key = specialArgumentsForSearchKit.urlCode;
-	const queryObject = specialArgumentsForSearchKit.fieldValues;
-	const pathname = stripTrailingSlash(specialArgumentsForSearchKit.pathname);
-	queryObject[key] = [values.min, values.max];
-	const url = stringifyQueryParams(queryObject);
-	history.replace({pathname: `${pathname}`, search: `?${url}`});
-}
-
-export function defaultOnChangeDateRangeHandler(fromDate, toDate, specialArgumentsForSearchKit) {
-	const key = specialArgumentsForSearchKit.urlCode;
-	const queryObject = specialArgumentsForSearchKit.fieldValues;
-	queryObject[key] = [fromDate.valueOf() / 1000, toDate.valueOf() / 1000];
-	const pathname = stripTrailingSlash(specialArgumentsForSearchKit.pathname);
-
-	if (this.isMobile) {
-		const { filters } = this.state;
-		const newState = Object.assign({}, filters, { fieldValues: queryObject });
-		this.setState({
-			filters: newState,
-		});
-	} else {
-		const { history } = this.props;
-		const url = stringifyQueryParams(queryObject);
-		history.replace({pathname: `${pathname}`, search: `?${url}`});
-	}
-=======
 function defaultOnPillCloseHandler(specialArgumentsForSearchKit) {
     const key = specialArgumentsForSearchKit.urlCode;
     const queryObject = specialArgumentsForSearchKit.fieldValues;
@@ -319,7 +179,6 @@ function defaultOnChangeDateRangeHandler(fromDate, toDate, specialArgumentsForSe
         const url = stringifyQueryParams(queryObject);
         history.replace({pathname: `${pathname}`, search: `?${url}`});
     }
->>>>>>> Searchkit, complete rewrite
 }
 
 /**
@@ -328,36 +187,7 @@ function defaultOnChangeDateRangeHandler(fromDate, toDate, specialArgumentsForSe
  * @param  {[type]} specialArgumentsForSearchKit [description]
  * @return {[type]}                              [description]
  */
-<<<<<<< HEAD
-export function defaultOnClearClickHandler(event, specialArgumentsForSearchKit) {
-	const key = specialArgumentsForSearchKit.urlCode;
-	const queryObject = specialArgumentsForSearchKit.fieldValues;
-	const pathname = stripTrailingSlash(specialArgumentsForSearchKit.pathname);
-	delete queryObject[key];
 
-	if (this.isMobile) {
-		const { filters } = this.state;
-		const newState = Object.assign({}, filters, { fieldValues: queryObject });
-		this.setState({
-			filters: newState,
-		});
-	} else {
-		const { history } = this.props;
-		const url = stringifyQueryParams(queryObject);
-		history.replace({pathname: `${pathname}`, search: `?${url}`});
-	}
-}
-
-export function defaultOnApplyClickHandler() {
-	this.setState({
-		applied: true, 
-	});
-	const { history } = this.props;
-	const queryObject = this.state.filters.fieldValues;
-	const pathname = stripTrailingSlash(this.pathname);
-	const url = stringifyQueryParams(queryObject);
-	history.replace({pathname: `${pathname}`, search: `?${url}`});
-=======
 function defaultOnClearClickHandler(event, specialArgumentsForSearchKit) {
     const key = specialArgumentsForSearchKit.urlCode;
     const queryObject = specialArgumentsForSearchKit.fieldValues;
@@ -386,20 +216,12 @@ function defaultOnApplyClickHandler() {
     const pathname = stripTrailingSlash(this.pathname);
     const url = stringifyQueryParams(queryObject);
     history.replace({pathname: `${pathname}`, search: `?${url}`});
->>>>>>> Searchkit, complete rewrite
+
 }
 
 /**
  * Default handler to clear all filters
  */
-<<<<<<< HEAD
-export function defaultOnClearAllClickHandler(specialArgumentsForSearchKit) {
-	const { history } = this.props;
-	const pathname = stripTrailingSlash(specialArgumentsForSearchKit.pathname);
-	history.push({pathname: `${pathname}`});
-}
-
-=======
 function defaultOnClearAllClickHandler(specialArgumentsForSearchKit) {
     const { history } = this.props;
     const pathname = stripTrailingSlash(specialArgumentsForSearchKit.pathname);
@@ -417,4 +239,3 @@ export {
     defaultOnClearClickHandler,
     defaultOnClearAllClickHandler
 };
->>>>>>> Searchkit, complete rewrite
