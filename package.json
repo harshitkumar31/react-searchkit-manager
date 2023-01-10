@@ -15,7 +15,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
-    "docz": "^0.2.6",
+    "docz": "^2.4.0",
     "prop-types": "^15.6.2",
     "query-string": "^6.1.0"
   },
